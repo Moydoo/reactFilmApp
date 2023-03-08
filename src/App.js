@@ -5,7 +5,7 @@ import './App.css';
 import SearchIcon from './search.svg'
 
 
-const API_URL = 'http://www.omdbapi.com/?i=tt3896198&apikey=[yourapikey]';
+const API_URL = 'https://www.omdbapi.com/?i=tt3896198&apikey=6cc8be83';
 
 
 const App = () => {
@@ -13,12 +13,13 @@ const App = () => {
     const [movies, setMovies] = useState([]);
     const [searchTerm, setSearchTerm] = useState('')
 
-    const searchMovies = async (title) => {
-        const response = await fetch(`${API_URL}&s=${title}`);
-        const data = await response.json();
+  const searchMovies = async (title) => {
+    const response = await fetch(`${API_URL}&s=${title}`);
+    const data = await response.json();
 
-        setMovies(data.Search);
-    }
+    setMovies(data.Search);
+  };
+
     const searchEnterKey = (e) => {
         if (e.key === 'Enter') {
             searchMovies(searchTerm)
@@ -53,7 +54,7 @@ const App = () => {
                         <div className="container">
                             {
                                 movies.map((movie) => (
-                                    <MovieCard movieName={movie} />
+                                    <MovieCard movie={movie} />
                                 ))
                             }
                         </div>
